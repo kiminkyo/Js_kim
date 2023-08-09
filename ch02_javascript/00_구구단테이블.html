@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구구단 테이블</title>
+</head>
+<style>
+    .tr {
+        color: black;
+    }
+</style>
+
+<body>
+
+    <table border="1">
+        <tr>
+            <td>2x2=4</td>
+            <td>3x2=6</td>
+            <td>4x2=8</td>
+            <td>5x2=10</td>
+        </tr>
+        <tr>
+            <td>6x2=12</td>
+            <td>7x2=14</td>
+            <td>8x2=16</td>
+            <td>9x2=18</td>
+        </tr>
+
+    </table>
+    <SCript>
+        document.write('<table border="1">')
+        for (let i = 2; i <= 9; i++) {
+            document.write('<tr>');
+
+            for (let k = 2; k < 10; k++) {
+                document.write(',td>' + k + 'x' + i + '=' + (i * k) + '</td'> )
+            }
+            document.write('</tr>');
+        }
+        document.write('</teble>');
+    </SCript>
+
+</body>
+
+</html>
