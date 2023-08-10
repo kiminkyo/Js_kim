@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>img교체</title>
+</head>
+
+<body>
+    <img id="myImg" width="500" height="400" src="../recnures/images/강아지.webp" alt="">
+    <br>
+    <button onclick="f_changeImg()">이미지 교체</button>
+
+
+
+    <script>
+        let imgArray = ["recnures/images/92535320.2.jpg"
+            , "recnures/recnures/images/slmFMXb1Fchs2zN0ZGOzqfuPDvhRS-H9eBp7Gp613-DNKi6i6Ct7eFkTUpauqv5HAYR97mrNqrvvcCDEyBdL_g.webp"
+            , "recnures/images/알레스카.jpeg"];
+
+        let idx = 0;
+            function f_changeImg() {
+                let myImg = document.getElementById("myImg");
+
+                console.log(myImg);
+                console.log(myImg.src);
+                console.log(myImg.width);
+                //이미지 교체 버튼을 누르면
+                //인덱 0 -1 - 2 - 0 - 1 - 2
+                idx++;
+                console.log(idx);
+
+                //if(idx == 3) {
+                //idx = 0;
+                //}
+
+                //순환하는 숫자에 대해 나머지 연산자(%)활용
+                myImg.src = "../recnures/images/" + imgArray[idx];
+
+
+
+
+
+
+            }
+    </script>
+
+</body>
+
+</html>
