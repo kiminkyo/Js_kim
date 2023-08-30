@@ -6,11 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>json다루기(종량제)</title>
 
-    <!-- 공공데이터포털 -->
+    <!-- 공공데이터포털 - 종량제 검색 -->
+    <!-- https://www.data.go.kr/tcs/dss/selectStdDataDetailView.do -->
 
+    <style>
+        .container{
+            width: 800px;
+            height: 600px;
+            margin: auto;
+            border: 1px solid black;
+
+            overflow-y: scroll;
+        }
+    </style>
 </head>
 
 <body>
+
+    <div class="container">
+        <div>
+            <input id="inputRegion" type="text">
+            <button onclick="f_search()">검색</button>
+        </div>
+        <div id="content"></div>
+
+    </div>
 
 
     <script src="./01-priceJS.js"></script>
@@ -79,6 +99,38 @@
             }
         }
         console.log(v_maxRegions);
+
+        //서울지역 데이터 중 v_seoul
+        //10리터 종량제 봉투 가격의 평균은?
+
+        //서울지역의 모든 데이터의 10리터 가격을 더한 후
+        //데이터의 수만큼 나누면 평균값
+        let v_sum = 0;
+        for(let i = 0;i < v_seoul.length; i++ ){
+            v_sum += parseInt(v_seoul[i]["10ℓ가격"])
+        }
+
+        let v_avg = v_sum / v_seoul.length;
+        console.log(v_avg);
+
+
+        //데이터를 화면에 뿌리기
+        const v_content = document.querySelector("#content");
+
+        for(let i = 0; i < v_records.length; i++){
+            if ( v_records[i]["종량제봉투사용대상"] == "가정용"
+                && v_records[i]["종량제봉투용도"] == "생활쓰레기"
+                && v_records[i]["종량제봉투종류"] == "규격봉투"
+                && v_records[i]["종량제봉투처리방식"] == "소각용") {
+
+                let v_str = "<h3>" + v_records[i]["시도명"];
+                v_str += " | " + v_records[i]["시군구명"];
+                v_str += " | " + v_records[i]["10ℓ가격"];
+
+                v_content.innerHTML += v_str;
+            }
+        }
+
     </script>
 </body>
 
