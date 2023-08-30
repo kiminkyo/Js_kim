@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지드래그첨부</title>
+    <style>
+        .img-box{
+            width: 600px;
+            height: 400px;
+            border: 2px solid black;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="img-box">
+
+    </div>
+    <input id="inputFile" type="file" accept="image/*" >
+    
+    <script>
+        const v_imgBox = document.getElementsByClassName("img-box")[0];
+
+        v_imgBox.addEventListener("drop", () => {
+            console.log(event.target);
+        })
+
+        //기본적으로 브라우저에 이미지 파일을
+        //드래그 앤 드롭 하면 새창이 열리면서 이미지를 보여준다.
+        //기본으로 설정된 드래그 앤 드롭 이벤트를 막아주어야 한다.
+        window.addEventListener("dragover",function(){
+            event.preventDefault()
+        });
+
+        window.addEventListener("drop",()=>{
+            event.preventDefault()
+        });
+
+
+        
+    </script>
+</body>
+</html>

@@ -52,9 +52,9 @@
 
         .login {
             margin-top: 20px;
-            padding-left: 12px;
-            border-radius: 20px;
-            padding-left: 80%;
+            margin-left: 715px;
+            background: #f1f1f1;
+            padding: 22px;
 
         }
 
@@ -66,33 +66,31 @@
         }
 
 
-        .y_movie{
+        .y_movie {
             bottom: 65%;
             position: absolute;
 
-            
+
         }
 
-        .m1{
+        .m1 {
             position: absolute;
             bottom: 60%;
         }
 
-        .login{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
 
-        
-        .notification{
-            height: 100px;
-            width: 500px;
+
+
+        .notification {
+            width: 48%;
             border: 1px solid black;
             cursor: pointer;
+            margin: 7px;
+            display: inline-block;
+
         }
 
-        .notification1{
+        .notification1 {
             height: 300px;
             width: 500px;
             margin-top: 20px;
@@ -100,39 +98,94 @@
             cursor: pointer;
         }
 
-        .notification1 h3{
+        .notification1 h3 {
             font-size: 10px;
         }
 
-        .notification3{
+        .notification3 {
             width: 500px;
             height: 500px;
             margin-top: 20px;
             border: 1px solid black;
         }
 
-        .notification3 img{
+        .notification3 img {
             width: 100%;
             height: 87%;
         }
 
-        .board{
-            position:relative;
+        .board {
+            margin-top: 105px;
+            position: relative;
             font-size: 20px;
             font-family: Georgia, 'Times New Roman', Times, serif;
         }
 
-        .board img{
+        .board img {
             width: 330px;
             height: 110px;
-            position:absolute;
+            position: absolute;
             left: 170px;
             top: -30px;
         }
 
+        .textbox {
+            width: 150px;
+        }
+
+        .container2 {
+            width: 900px;
+            height: 600px;
+            border: 1px solid black;
+            margin: auto;
+
+            position: relative;
+        }
+
+        .modal {
+            width: 400px;
+            height: 300px;
+            border-radius: 20px;
+            box-shadow: 4px 4px 4px 4px gainsboro;
+            background-color: white;
+            ;
+            position: absolute;
+            top: 10%;
+            left: 50%;
+
+            transform: translate(-50%, 0);
+        }
+
+        .align-end {
+            text-align: end;
+        }
+
+        @keyframes down {
+            0% {
+                top: 0;
+                transform: translate(-50%, -100%);
+            }
+
+            100% {
+                top: 10%;
+                transform: translate(-50%, 0);
+            }
+        }
+
+        .modal-down {
+            animation: down 0.5s forwards;
+        }
+
+        .d-none {
+            display: none;
+        }
+        .m_but{
+            top: 234px;
+            height: 49px;
+            left: 1350px;
 
 
-
+        }
     </style>
 </head>
 
@@ -140,13 +193,16 @@
     <div class="container">
         <div>
             <div class="y_movie">
-                <iframe   width="500" height="200" src="https://www.youtube.com/embed/kHAAM8WUWDU?si=_L2M0e5lN0prSyxv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>글러브 길들이기 완료</iframe>
+                <iframe width="500" height="200" src="https://www.youtube.com/embed/kHAAM8WUWDU?si=_L2M0e5lN0prSyxv"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>글러브 길들이기 완료</iframe>
             </div>
             <img width="150px" height="50px"
                 src="data:image/jpeg;base64,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"
                 alt="">
-                <h2 class="m1">글러브길들이기</h2>
-                
+            <h2 class="m1">글러브길들이기</h2>
+
             <img class="banner" src="http://file.clubone.kr/banner/2023/64e573374fe511h8g4k40v.jpg" alt="">
             <img class="banner" src="http://file.clubone.kr/banner/2023/6493a00c02ee71h3gaibnc.png" alt="">
             <img class="banner" src="http://file.clubone.kr/banner/2023/64cc540552bed1h6v2gd6q.jpg" alt="">
@@ -189,12 +245,11 @@
         </div>
 
 
-            <div class="login">
-            <input id="inputId" type="text" placeholder="아이디">
+        <div class="login">
+            <input id="inputId" class="textbox" type="text" placeholder="아이디">
             <br>
-            <input id="inputPw" type="text" placeholder="비밀번호">
-            <br>
-            <button onclick="f_login()">로그인</button>
+            <input id="inputPw" class="textbox" type="text" style="margin-top: 8px;" placeholder="비밀번호">
+            <button id="m_but" onclick="f_login()" >로그인</button>
             <br>
             <label for="rememberId">ID 저장</label>
             <input type="checkbox" id="rememberId">
@@ -203,26 +258,34 @@
         <div>
             <div class="board">
                 <h1> >게시판< </h1>
-                <img class   src="https://m.pandadesign.co.kr/web/product/big/201503/175_shop1_303656.jpg" alt="">
+                        <img class src="https://m.pandadesign.co.kr/web/product/big/201503/175_shop1_303656.jpg" alt="">
             </div>
+
+        </div>
+        <div style="width: 100%">
             <div class="notification">
                 <h2>세종 1구장 8월28일 야간 용병게임 인원 구합니다!</h2>
-                <h5>8월 28일 세종 1구장에서 용병게임 진행 할려고 합니다.
-                비용은 1만원이며 총 18명 구합니다</h5>
+                <a onclick="f_down()">8월 28일 세종 1구장에서 용병게임 진행 할려고 합니다.
+                    비용은 1만원이며 총 18명 구합니다</a>
             </div>
             <div class="notification1">
-                <h2 >장비자랑한번 하겠습니다 행님들</h2>
-                <img  height="60%" width="100%"  src="/recnures/images/야구장비.jpeg" alt="">
-                <h3 >나름 소소하게 수집한 장비입니다 행님들</h3>
+                <h2>장비자랑한번 하겠습니다 행님들</h2>
+                <img height="60%" width="100%" src="/recnures/images/야구장비.jpeg" alt="">
+                <h3>나름 소소하게 수집한 장비입니다 행님들</h3>
             </div>
-            <div class="notification3">
+            <div class="notification">
                 <h3>경기 사진</h3>
-                <img src="/recnures/images/경기사진.jpeg" alt="">
+                <img height="10%" width="70%" src="/recnures/images/경기사진.jpeg" alt="">
             </div>
-        </div>
-        </div>
+            <div class="notification">
+                <h3>경기 사진</h3>
+                <img height="50%" width="40%" src="/recnures/images/타자.png" alt="">
+            </div>
 
-        <div></div>
+        </div>
+    </div>
+
+    <div></div>
 
 
 
@@ -231,8 +294,15 @@
 
 
 
+    <div class="modal modal-down d-none">
+        <div class="align-end">
+            <img onclick="f_close()" width="40" height="40" src="/recnures/images/x버튼.png" alt="">
+        </div>
+        <div id="result">8월 28일 세종 1구장에서 용병게임 진행 할려고 합니다.
+            비용은 1만원이며 총 18명 구합니다 0/18<button onclick="ok();">참여</button></div>
+    </div>
 
-
+    </div>
 
 
 
@@ -240,6 +310,21 @@
 
 
     <script>
+        countnum = 0;
+
+        const v_modal = document.getElementsByClassName("modal")[0];
+
+        // display가 none이였다가 해제되는 경우 지정한 애니메이션이 동작한다.
+        function f_down() {
+            v_modal.classList.remove("d-none");
+        }
+
+        function f_close() {
+            v_modal.classList.add("d-none");
+        }
+
+
+
         const v_banner = document.getElementsByClassName("banner");
 
         for (let i = 0; i < v_banner.length; i++) {
@@ -256,7 +341,20 @@
 
         f_cgIndex();
 
-        
+
+
+
+        function ok() {
+            alert("참여되셨습니다");
+            countnum = countnum + 1;
+            document.getElementById("result").innerHTML
+                = "8월 28일 세종 1구장에서 용병게임 진행 할려고 합니다. 비용은 1만원이며 총 18명 구합니다" + countnum + "/18 <button onclick='ok();'>참여</button>";
+        }
+
+
+
+
+
     </script>
 
 

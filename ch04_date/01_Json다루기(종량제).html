@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json다루기(종량제)</title>
+
+    <!-- 공공데이터포털 -->
+
+</head>
+
+<body>
+
+
+    <script src="./01-priceJS.js"></script>
+    <script>
+        console.log(priceData);
+
+        let v_records = priceData["records"];
+
+        console.log(v_records);
+
+        console.log(v_records[0]);
+        console.log(v_records[0]["5ℓ가격"])
+
+        // JSON 객체의 키값들을 배열로 가져오기
+        let v_keys = Object.keys(v_records[0])
+        console.log(v_keys);
+
+
+
+        //let v_seoul = [];
+        //for(let i = 0; i< v_records.length; i++){
+        //if(v_records[i]["시도명"].indexOf("서울") != -1){
+        //v_seoul.push(v_records[i])
+        //}
+        //}
+
+        //v_records 에서 서울지역에 해당하는 데이터만 꺼내기
+        //시도명: 서울특별시
+        //종량제봉투사용대상: 가정용
+        //종량제봉투용도: 생활쓰레기
+        //종량제봉투종류: 규격봉투
+        //종량제봉투처리방식:소각용
+        let v_seoul = [];
+        for (let i = 0; i < v_records.length; i++) {
+            if (v_records[i]["시도명"].indexOf("서울") != -1
+                && v_records[i]["종량제봉투사용대상"] == "가정용"
+                && v_records[i]["종량제봉투용도"] == "생활쓰레기"
+                && v_records[i]["종량제봉투종류"] == "규격봉투"
+                && v_records[i]["종량제봉투처리방식"] == "소각용") {
+                v_seoul.push(v_records[i])
+            }
+        }
+
+
+
+
+        console.log(v_seoul)
+        //서울 종량제 봉투 데이터 확보
+        //10리터 봉투 가격비교
+        let v_mex = v_seoul[0];
+        for (let i = 0; i < v_seoul.length; i++) {
+            if (v_mex["10ℓ가격"] < v_seoul[i]["10ℓ가격"]) {
+                v_mex = v_seoul[i];
+            }
+        }
+        //380원인 은평구가 잡힘
+        console.log(v_mex)
+
+        //380원인 구역이 은평구 뿐인가?
+        //v_seoul에서 10리터 가격이 380원인 구역들을 수집
+        let v_maxRegions = [];
+        for(let i = 0; i < v_seoul.length; i++){
+            // ==는 타입과 값 모두 일치해야 true를 리턴
+            if(v_seoul[i]["10ℓ가격"] == "380"){
+                v_maxRegions.push(v_seoul[i]);
+            }
+        }
+        console.log(v_maxRegions);
+    </script>
+</body>
+
+</html>
