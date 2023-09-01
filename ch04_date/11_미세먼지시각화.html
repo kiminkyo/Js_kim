@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미세먼지시각화</title>
+
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <div style="width: 600px; height: 400px;">
+        <canvas id="myChart"></canvas>
+    </div>
+
+
+
+    <script>
+        const ctx = document.getElementById("myChart");
+
+
+        let v_airData = JSON.parse(localStorage.getItem("airData"));
+
+        console.log(v_airData)
+
+
+        new Chart(ctx,{
+            type: 'bar',
+            data: {
+
+                labels: ['제주','충남','경기','경남','경북','인천','전남','충북','광주','강원','대전','부산','서울','전북','대구','울산','세종'],
+                datasets: [{
+                    data: []
+                }]
+            }
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선수능력치</title>
+</head>
+<body>
+    <div style="width: 600px; height: 400px;">
+        <canvas id="myChart"></canvas>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/x2js/1.2.0/xml2json.min.js" integrity="sha512-HX+/SvM7094YZEKOCtG9EyjRYvK8dKlFhdYAnVCGNxMkA59BZNSZTZrqdDlLXp0O6/NjDb1uKnmutUeuzHb3iQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            let v_ajax = new XMLHttpRequest();
+
+            v_ajax.open("GET", "./10_축구선수.xml")
+
+            v_ajax.onload = () => {
+                console.log(v_ajax.response); // XML 문자열
+
+                let v_x2js = new X2JS();
+                let v_json = v_x2js.xml_str2json();
+
+                console.log(v_json);
+
+                const ctx = document.getElementById("myCgart");
+
+                let v_labels = [];
+                let v_datasets = [];
+
+                let v_players = v_json["xml"]["players"]["play"];
+                console.log(v_players)
+
+                v_labels = Object.keys(v_players[0]["stat"])
+
+                new Chart(ctx, {
+                    type : "radar",
+                    data: {
+                        v_labels: v_labels,
+                        datasets : v_datasets
+                    },
+                    options: {
+                        scale: {
+                            ticks: {
+                                stepSize: 1.0
+                            }
+                        }
+                    }
+                })
+            };
+
+            v_ajax.send();
+        </script>
+</body>
+</html>
