@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>환율시각화</title>
+</head>
+<body>
+    <div style="width: 600px; height: 400px;">
+        <canvas id="myChart"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        let v_rateDB = JSON.parse(localStorage.getItem("rateDB"));
+        console.log(rateDB);
+
+        let v_rates = v_rateDB["rates"];
+        console.log(rates)
+
+        let v_labels = Object.keys(v_rates);
+        let v_krwData = [];
+        for(let i =0; i< v_labels.length; i++){
+            v_rates[v_labels[i]]["KRW"]
+            v_krwData.push(v_rates[v_labels[i]]["KRW"]);
+        }
+
+        const ctx = document.getElementById('myChart');
+
+//날짜에 대한 값의 변화를 보여주는데 적합
+new Chart(ctx, {
+    type: 'line', //bar, line,pie,doughnut,rader
+    data: {
+        labels: ['2020-08-01', '2020-08-02', '2020-08-03',],
+        data: [{
+            labels: v_labels,
+            label: 'KRW',
+            data: [10000, 9000, 7000, 8000, 6000,],
+            borderWidth: 2,
+            borderColor: 'blue', //선 색상
+            pointRadius: 0 //점 표기 삭제(수치를 키우면 나타남)
+        },{
+            label: "Vue.js",
+            borderWidth: 3, //선굵기
+            borderColor: 'red', //선 색상
+            pointRadius: 0 //점 표기 삭제(수치를 키우면 나타남)
+        },{
+            type : "bar", //차트형식을 별도로 지정 
+            labels: ['2018', '2019', '2020', '2021',  '2022',],
+            label: 'JSP',
+            borderWidth: 2,
+            borderColor: 'blue', //선 색상
+            backgroundColor: "rgba(0,0,255,0.2)",
+            barThickness:30,
+            pointRadius: 0 //점 표기 삭제(수치를 키우면 나타남)
+        }]
+    },
+    options: {
+        elements: {
+            line: {
+                tension: 0.1 //수치가 커지면 꺽임
+            }
+        },
+        plugins: {
+            legend: {
+                display: false
+            }
+        }
+    }
+});
+
+ctx.addEventListener("wheel", ()=>{
+    //휠을 올리면 양수, 내리면 음수
+    let v_state = 0;
+    console.log(event.wheelDelta)
+
+    if(event.wheelDelta > 0){
+        v_state++;
+
+        if(v_state >=3){
+            v_state = 2;
+        }
+    }else{
+        v_state--;
+
+        if(v_state < 0){
+            v_state = 0;
+        }
+    }
+    console.log(v_state)
+
+})
+
+
+function f_update(){
+    let v_templabels = v_labels;
+    let v_tempData = v_krwData;
+    
+    //v_state가 0이면 일년치
+    if(v_state == 0){
+
+    }else if(v_state == 1){// 한달치
+
+    }else if(v_state ==2){ //일주일치
+
+    }
+
+    v_chart["data"]["labels"] = v_templabels
+    v_chart["data"]["datasets"][0]["data"] = v_tempData
+    v_chart,f_update();
+}
+    </script>
+    
+</body>
+</html>
