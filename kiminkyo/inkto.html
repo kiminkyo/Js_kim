@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 1200px;
+            height: 2000px;
+            border: 1px solid black;  /* 지울것 */
+        }
+
+        .a_bar {
+            font-size: 20px;
+            color: #707070;
+            display: flex;
+            list-style: none;
+            position: relative;
+            cursor: pointer;
+            
+        }
+
+        .b_bar {
+            font-size: 20px;
+            color: #707070;
+            display: flex;
+            list-style: none;
+            position: relative;
+            padding-left: 50%;
+        }
+        .banner{
+            position: absolute;
+            width: 60%;
+            height: 30%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div>로그인및 메뉴바
+            <ul class="a_bar">
+                <li>
+                    <a  style=>제주특별자치도</a>
+                </li>
+                <li>
+                    <a >도의회</a>
+                </li>
+                <li>
+                    <a >제주시</a>
+                </li>
+                <li>
+                    <a >서귀포시</a>
+                </li>
+                <ul class="b_bar">
+                    <li>
+                        <a >로그인</a>
+                    </li>
+                    <li>
+                        <a >비회원로그인</a>
+                    </li>
+                </ul>
+            </ul>
+
+            <div>메뉴바
+                <img width="5%" height="10%" src="./recnures/images/한라산17도.jpeg" alt="">
+            </div>
+        </div>
+        <div>배너
+            <img class="banner" src="./recnures/images/한라산 봄.jpeg" alt="">
+            <img class="banner" src="./recnures/images/106병.jpeg" alt="">
+            <img class="banner" src="./recnures/images/한라사 열므.jpeg" alt="">
+            <img class="banner" src="./recnures/images/106소주.jpeg" alt="">
+            <img class="banner" src="./recnures/images/한라산 가을.jpg" alt="">
+            <img class="banner" src="./recnures/images/한라산 겨울.jpg" alt="">
+        </div>
+    </div>
+    <div></div>
+    </div>
+
+
+
+    <script>
+                const v_banner = document.getElementsByClassName("banner");
+
+for(let i = 0; i < v_banner.length; i++){
+    v_banner[i].style.zIndex = i;
+}
+
+function f_cgIndex(){
+    for(let i = 0; i < v_banner.length; i++){
+        v_banner[i].style.zIndex = (v_banner[i].style.zIndex + 1) % 6;
+    }
+
+    setTimeout(f_cgIndex, 2000);
+}
+
+f_cgIndex();
+    </script>
+</body>
+
+</html>
