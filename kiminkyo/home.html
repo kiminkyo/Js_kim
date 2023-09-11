@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +13,7 @@
     .box {
         width: 1200px;
         height: 2000px;
-        border: 1px solid black;  /* 지울것 */
+        border: 1px solid black;
     }
 
     .a-bar {
@@ -19,8 +23,8 @@
         list-style: none;
         position: relative;
         cursor: pointer;
-        
-        
+
+
     }
 
     .b-bar {
@@ -29,10 +33,11 @@
         display: flex;
         list-style: none;
         position: relative;
-        padding-left: 50%;
-        
+        padding-left: 26%;
+
     }
-    .banner{
+
+    .banner {
         position: absolute;
         width: 55%;
         height: 30%;
@@ -43,13 +48,43 @@
         display: flex;
         cursor: pointer;
     }
-    .m-bar>div{
+
+    .m-bar>div {
         width: calc(100%/4);
         display: flex;
         justify-content: center;
         align-items: center;
-    } 
-    .drop-content{
+    }
+
+    .container {
+        width: 100%;
+        height: 145px;
+        margin: auto;
+    }
+
+    .nav-bar {
+        background-color: rgb(237, 250, 208);
+        height: 60px;
+        position: relative;
+    }
+
+    .nav-bar:hover .drop-content {
+        visibility: visible;
+    }
+
+    .nav {
+        height: 100%;
+        display: flex;
+    }
+
+    .nav>div {
+        width: calc(100%/5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .drop-content {
         position: absolute;
         top: 100%;
         width: 100%;
@@ -60,97 +95,261 @@
         visibility: hidden;
     }
 
-    .m-bar:hover .drop-content{
-        visibility: visible;
-    }
-
-    .drop-content > div{
+    .drop-content>div {
         width: calc(100%/5);
         display: flex;
         flex-direction: column;
         align-items: center;
+        color: blue;
     }
 
-    .m-banner{
+    .m-banner {
         width: 15%;
         height: 15%;
     }
 
-    .main-bg{
-        width: 980px;
+    .main-bg {
+        width: 100%;
     }
 
     .visit .visit-list dt {
         text-align: center;
-color: #000;
-font-size: 20px;
-font-family: 'S-CoreDream-6Bold';
+        color: #000;
+        font-size: 20px;
+        font-family: 'S-CoreDream-6Bold';
     }
 
-    .wr-1{
+    .wr-1 {
         display: block;
-width: calc( ( 100% - 10px ) / 5 );
-height: 240px;
-margin-left: 4px;
-padding-top: 25px;
-border: 1px solid #C6CBDC;
-border-radius: 10px;
-box-shadow: 0px 10px 15px #333E5329;
-background-color: #F8FCFF;
+        width: calc((100% - 10px) / 5);
+        height: 240px;
+        margin-left: 4px;
+        padding-top: 25px;
+        border: 1px solid #C6CBDC;
+        border-radius: 10px;
+        box-shadow: 0px 10px 15px #333E5329;
+        background-color: #F8FCFF;
     }
 
-    .situation{
+    .situation {
         width: 65%;
-height: 50px;
-margin: 0 auto;
-padding-top: 15px;
-border-radius: 10px;
-text-align: center;
-color: #fff;
-font-size: 16px;
-font-family: 'S-CoreDream-6Bold';
-background-color: #2259B9;
+        height: 50px;
+        margin: 0 auto;
+        padding-top: 15px;
+        border-radius: 10px;
+        text-align: center;
+        color: #fff;
+        font-size: 16px;
+        font-family: 'S-CoreDream-6Bold';
+        background-color: #2259B9;
     }
 
-    .visit-time{
-margin-bottom: 15px;
-font-family: 'S-CoreDream-4Regular';
-font-size: 14px;
-color: #000;
-text-align: center;
+    .visit-time {
+        margin-bottom: 15px;
+        font-family: 'S-CoreDream-4Regular';
+        font-size: 14px;
+        color: #000;
+        text-align: center;
     }
 
-    .visit-sub{
-display: inline-block;
-width: 100%;
-height: 22px;
-margin-bottom: 3px;
-vertical-align: middle;
-font-size: 14px;
-font-weight: bold;
-text-align: center;
-line-height: 21px;
-border-radius: 10px;
-border: 1px solid #D4DFF1;
-overflow: hidden;
+    .visit-sub {
+        display: inline-block;
+        width: 100%;
+        height: 22px;
+        margin-bottom: 3px;
+        vertical-align: middle;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 21px;
+        border-radius: 10px;
+        border: 1px solid #D4DFF1;
+        overflow: hidden;
     }
 
 
-    .wrap{
+    .wrap {
         display: flex;
     }
 
-    .list-un{
+    .main-board {
+        height: 400px;
+        width: 1160px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #333;
+        background-color: #fff;
+
+    }
+
+    .list-un {
         min-width: 320px;
-word-break: keep-all;
-letter-spacing: -0.8px;
-overflow-x: hidden;
+        word-break: keep-all;
+        letter-spacing: -0.8px;
+        overflow-x: hidden;
+        color: #000;
+    }
+
+    .date {
+        color: blue;
+        cursor: pointer;
+        font-size: 18px;
+    }
+
+    .ti {
+        cursor: pointer;
+        font-size: 20px;
+    }
+
+    .board-a {
+        width: 50%;
+        height: 100%;
+        border: 1px solid black;
+    }
+
+    .end {
+        width: 100%;
+        min-height: 64px;
+        height: 100px;
+        background-color: #3D5070;
+    }
+
+    .e-1 {
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+
+    .b-bar>li {
+        margin-left: 5px;
+    }
+
+    .a-bar>li {
+        margin-left: 5px;
     }
 
 
+    .footer {
+        clear: both;
+        background: #F6F6F6;
+        position: relative;
+        z-index: 100;
+    }
 
-    
-    </style>
+    .footer-util {
+        width: 100%;
+        min-height: 64px;
+        padding: 20px 0;
+        background-color: #3D5070;
+    }
+
+    .footer-util p span {
+        position: relative;
+        padding: 0 10px 0 10px;
+        font-size: 16px;
+        color: #DDE4EF;
+        letter-spacing: -0.8px;
+    }
+
+    .footer-util p span:before {
+        content: "";
+        position: absolute;
+        top: 11px;
+        left: 0;
+        border-radius: 50%;
+        width: 4px;
+        height: 4px;
+        background-color: #8D9CB5;
+    }
+
+    .footer address {
+        color: #707070;
+        padding: 35px 0;
+        margin-bottom: 0;
+    }
+
+    .footer-sns {
+        position: absolute;
+        top: 50px;
+        right: 180px;
+    }
+
+    .footer-sns a {
+        margin-left: 7px;
+    }
+
+    .footer .policy-btn {
+        position: absolute;
+        top: 30px;
+        right: 0;
+    }
+
+    .footer .policy-btn a {
+        display: block;
+        width: 120px;
+        padding-bottom: 5px;
+        color: #707070;
+        font-weight: bold;
+        font-size: 14px;
+        text-align: center;
+        border-bottom: 1px solid #CBCBCB;
+    }
+
+    .footer .right-list {
+        position: absolute;
+        top: 70px;
+        right: 0;
+    }
+
+    .footer dl {
+        position: relative;
+        display: inline-block;
+        width: 120px;
+        height: 32px;
+        border-bottom: 1px solid #CBCBCB;
+    }
+
+    .footer dl dt a {
+        display: block;
+        padding-left: 10px;
+        line-height: 32px;
+        color: #707070;
+        font-weight: normal;
+    }
+
+    .footer dl dt a i {
+        position: absolute;
+        top: 12px;
+        right: 10px;
+        font-size: 16px;
+    }
+
+    .footer dl dd {
+        position: absolute;
+        display: none;
+        width: 100%;
+        max-height: 500px;
+        overflow-y: auto;
+        bottom: 32px;
+        left: 0;
+        padding: 2px 0;
+        border: 1px solid #CCC;
+        background: #FFF;
+    }
+
+    .footer dl dd a {
+        display: block;
+        padding: 5px;
+        color: #555;
+    }
+
+    .vi {
+        height: 400px;
+        width: 580px;
+        position: absolute;
+        right: 915px;
+        top: 890px;
+    }
+</style>
 
 
 
@@ -158,199 +357,286 @@ overflow-x: hidden;
 <body>
     <div class="box">
         <ul class="a-bar">
-        <a  style=>제주특별자치도</a>
-    </li>
-    <li>
-        <a >도의회</a>
-    </li>
-    </li>
-    <li>
-        <a >서귀포시</a>
-    </li>
+            <a style=>제주특별자치도</a>
+            </li>
+            <li>
+                <a>도의회</a>
+            </li>
+            </li>
+            <li>
+                <a>서귀포시</a>
+            </li>
 
-    <ul class="b-bar">
-        <li>
-            <a >로그인</a>
-        </li>
-        <li>
-            <a >비회원로그인</a>
-        </li>
-    </ul>
-</ul>
+            <ul class="b-bar">
+                <li>
+                    <div id="login">
+                        <input id="id" type="text" style="display: inline-block;">
+                        <input type="text" style="display: inline-block;">
+                        <a onclick="fn_login();">로그인</a> <a onclick="fn_login()">비회원로그인</a>
+                    </div>
+                </li>
+            </ul>
+        </ul>
 
-<div class="m-bar"> <!-- 메뉴바 -->
-    <img width="5%" height="10%" src="./recnures/images/한라산17도.jpeg" alt="">
-    <div>공원소개</div>
-    <div>탐방안내</div>
-    <div>열린마당</div>
-    <div>홍보관</div>
-</div>
-<div class="drop-content">
-    <div>
-        <a href="">공원연혁</a>
-        <a href="">조직도</a>
-        <a href="">찾아오시는길</a>
-        <a href="">공원시설안내</a>
-        <a href="">탐방객현황</a>
-    </div>
-    <div>
-        <a href="">탐방정보</a>
-        <a href="">안정수칙</a>
-        <a href="">탐방안내소</a>
-    </div>
-    <div>
-        <a href="">공지사항</a>
-        <a href="">궁금합니다</a>
-        <a href="">제안합니다</a>
-        <a href="">자주하는 질문</a>
-    </div>
-    <div>
-        <a href="">동영상자료</a>
-        <a href="">한라산의이야기</a>
-        <a href="">한라산 사진전</a>
-        <a href="">한라산의 자연생태</a>
-    </div>
-</div>
+        <div class="container">
 
-<div class="m-banner"> <!-- 베너 -->
-    <img class="banner" src="./recnures/images/한라산 봄.jpeg" alt="">
-    <img class="banner" src="./recnures/images/106병.jpeg" alt="">
-    <img class="banner" src="./recnures/images/한라사 열므.jpeg" alt="">
-    <img class="banner" src="./recnures/images/106소주.jpeg" alt="">
-    <img class="banner" src="./recnures/images/한라산 가을.jpg" alt="">
-    <img class="banner" src="./recnures/images/한라산 겨울.jpg" alt="">
-</div>
-
-<div class="main-bg">
-<div class="main-bg2">
-    <div style="width: 786px;" class="con-box">
-        <div>
-            <div class="visit">
-                <div class="visit-title">
-                    <h3 style="color: #2259B9;">탐방안내</h3>
+            <div class="nav-bar">
+                <div class="nav">
+                    <img width="100px" height="100%" src="./recnures/images/한라산17도.jpeg" alt="">
+                    <div>공원소개</div>
+                    <div>탐방안내</div>
+                    <div>열린마당</div>
+                    <div>홍보관</div>
                 </div>
-                <div class="wrap">
-                    <a class="wr-1" href="">
-                    <dl class="visit-list">
-                        <dt>어리목탐방로</dt>
-                        <div class="visit-time">편도 6.8km / 3시간</div>
-                        <div class="situation">정상운영</div>
-                        <div>
-                            <div class="visit-sub">어리목주차장</div>
-                            <br>
-                            <div class="visit-sub">윗세오름대피소</div>
-                        </div>
-                    </dl>
-                </a>
-                <a class="wr-1" href="">
-                    <dl class="visit-list">
-                        <dt>영실탐방로</dt>
-                        <div class="visit-time">편도 5.8km /2시간30분</div>
-                        <div class="situation">정상운영</div>
-                        <div>
-                            <div class="visit-sub">영실휴게소</div>
-                            <br>
-                            <div class="visit-sub">윗세오름대피소</div>
-                        </div>
-                    </dl>
-                </a>
-                <a class="wr-1" href="">
-                    <dl class="visit-list">
-                        <dt>성판악탐방로</dt>
-                        <div class="visit-time">편도 9.6km /4시간30분</div>
-                        <div class="situation">정상운영</div>
-                        <div>
-                            <div class="visit-sub">성판악주차장</div>
-                            <br>
-                            <div class="visit-sub">정상(백록담)</div>
-                        </div>
-                    </dl>
-                </a>
 
-                <a class="wr-1" href="">
-                    <dl class="visit-list">
-                        <dt>관음사탐방로</dt>
-                        <div class="visit-time">편도 8.7km / 5시간</div>
-                        <div class="situation">정상운영</div>
-                        <div>
-                            <div class="visit-sub">관음사주차장</div>
-                            <br>
-                            <div class="visit-sub">정상(백록담)</div>
-                        </div>
-                    </dl>
-                </a>
-                <a class="wr-1" href="">
-                    <dl class="visit-list">
-                        <dt>어승생악탐방로</dt>
-                        <div class="visit-time">편도 1.3km / 30분</div>
-                        <div class="situation">정상운영</div>
-                        <div>
-                            <div class="visit-sub">어리목주차장</div>
-                            <br>
-                            <div class="visit-sub">어리목주차장</div>
-                        </div>
-                    </dl>
-                </a>
+                <div class="drop-content">
 
-                <a class="wr-1" href="">
-                    <dl class="visit-list">
-                        <dt>돈내코탐방로</dt>
-                        <div class="visit-time">편도 69.1km /4시간30분</div>
-                        <div class="situation">정상운영</div>
-                        <div>
-                            <div class="visit-sub">돈내코 입구</div>
-                            <br>
-                            <div class="visit-sub">윗세오름대피소</div>
-                        </div>
-                    </dl>
-                </a>
+                    <div style="width:60px"></div>
 
-                <a class="wr-1" href="">
-                    <dl class="visit-list">
-                        <dt>석굴암탐방로</dt>
-                        <div class="visit-time">편도 1.5km /50분</div>
-                        <div class="situation">정상운영</div>
-                        <div>
-                            <div class="visit-sub">국립호국원 주차장</div>
-                            <br>
-                            <div class="visit-sub">석굴암 정상</div>
-                        </div>
-                    </dl>
-                </a>
+                    <div>
+                        <a href="https://visithalla.jeju.go.kr/">탐방정보</a>
+                        <a href="">안정수칙</a>
+                        <a href="">탐방안내소</a>
+                    </div>
+                    <div>
+                        <a href="">공지사항</a>
+                        <a href="">궁금합니다</a>
+                        <a href="">제안합니다</a>
+                        <a href="">자주하는 질문</a>
+                    </div>
+                    <div>
+                        <a href="">공지사항</a>
+                        <a href="">궁금합니다</a>
+                        <a href="">제안합니다</a>
+                        <a href="">자주하는 질문</a>
+                    </div>
+                    <div>
+                        <a href="">동영상자료</a>
+                        <a href="">한라산의이야기</a>
+                        <a href="">한라산 사진전</a>
+                        <a href="">한라산의 자연생태</a>
+                    </div>
+
                 </div>
             </div>
-            
         </div>
-    </div>
+        <button onclick="f_send()">가져오기</button>
+        <div class="m-banner"> <!-- 베너 -->
+            <img class="banner" src="./recnures/images/한라산 봄.jpeg" alt="">
+            <img class="banner" src="./recnures/images/106병.jpeg" alt="">
+            <img class="banner" src="./recnures/images/한라사 열므.jpeg" alt="">
+            <img class="banner" src="./recnures/images/106병.jpeg" alt="">
+            <img class="banner" src="./recnures/images/한라산 가을.jpg" alt="">
+            <img class="banner" src="./recnures/images/한라산 겨울.jpg" alt="">
+        </div>
 
-<!-- 3단 -->
-    <div class="main-board">
-        <h3 style="color: #2259B9;">한라산 소식</h3>
-        <ul class="list-un">
+        <div class="main-bg">
+            <div class="main-bg2">
+                <div class="con-box">
+                    <div>
+                        <div class="visit">
+                            <div class="visit-title">
+                                <h3 style="color: #2259B9;">탐방안내</h3>
+                            </div>
+                            <div class="wrap">
+                                <a class="wr-1" href="">
+                                    <dl class="visit-list">
+                                        <dt>어리목탐방로</dt>
+                                        <div class="visit-time">편도 6.8km / 3시간</div>
+                                        <div class="situation">정상운영</div>
+                                        <div>
+                                            <div class="visit-sub">어리목주차장</div>
+                                            <br>
+                                            <div class="visit-sub">윗세오름대피소</div>
+                                        </div>
+                                    </dl>
+                                </a>
+                                <a class="wr-1" href="">
+                                    <dl class="visit-list">
+                                        <dt>영실탐방로</dt>
+                                        <div class="visit-time">편도 5.8km /2시간30분</div>
+                                        <div class="situation">정상운영</div>
+                                        <div>
+                                            <div class="visit-sub">영실휴게소</div>
+                                            <br>
+                                            <div class="visit-sub">윗세오름대피소</div>
+                                        </div>
+                                    </dl>
+                                </a>
+                                <a class="wr-1" href="">
+                                    <dl class="visit-list">
+                                        <dt>성판악탐방로</dt>
+                                        <div class="visit-time">편도 9.6km /4시간30분</div>
+                                        <div class="situation">정상운영</div>
+                                        <div>
+                                            <div class="visit-sub">성판악주차장</div>
+                                            <br>
+                                            <div class="visit-sub">정상(백록담)</div>
+                                        </div>
+                                    </dl>
+                                </a>
 
-        </ul>
-    </div>
-</div>
+                                <a class="wr-1" href="">
+                                    <dl class="visit-list">
+                                        <dt>관음사탐방로</dt>
+                                        <div class="visit-time">편도 8.7km / 5시간</div>
+                                        <div class="situation">정상운영</div>
+                                        <div>
+                                            <div class="visit-sub">관음사주차장</div>
+                                            <br>
+                                            <div class="visit-sub">정상(백록담)</div>
+                                        </div>
+                                    </dl>
+                                </a>
+                                <a class="wr-1" href="">
+                                    <dl class="visit-list">
+                                        <dt>어승생악탐방로</dt>
+                                        <div class="visit-time">편도 1.3km / 30분</div>
+                                        <div class="situation">정상운영</div>
+                                        <div>
+                                            <div class="visit-sub">어리목주차장</div>
+                                            <br>
+                                            <div class="visit-sub">어리목주차장</div>
+                                        </div>
+                                    </dl>
+                                </a>
+
+                                <a class="wr-1" href="">
+                                    <dl class="visit-list">
+                                        <dt>돈내코탐방로</dt>
+                                        <div class="visit-time">편도 69.1km /4시간30분</div>
+                                        <div class="situation">정상운영</div>
+                                        <div>
+                                            <div class="visit-sub">돈내코 입구</div>
+                                            <br>
+                                            <div class="visit-sub">윗세오름대피소</div>
+                                        </div>
+                                    </dl>
+                                </a>
+
+                                <a class="wr-1" href="">
+                                    <dl class="visit-list">
+                                        <dt>석굴암탐방로</dt>
+                                        <div class="visit-time">편도 1.5km /50분</div>
+                                        <div class="situation">정상운영</div>
+                                        <div>
+                                            <div class="visit-sub">국립호국원 주차장</div>
+                                            <br>
+                                            <div class="visit-sub">석굴암 정상</div>
+                                        </div>
+                                    </dl>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <ul class="main-board">
+                <div class="board-a">
+                    <h3 style="color: #2259B9;">한라산 소식</h3>
+                    <ul class="list-un">
+                        <li>
+                            <a class="ti">오늘의 한라산</a>
+                            <span class="date">2023-09-21</span>
+                        </li>
+                        <li>
+                            <a class="ti">제주특별자치도 세계유산본부 한라산국립 공원 임기제공무원 임용시험 시행공고</a>
+                            <span class="date">2023-08-29</span>
+                        </li>
+                        <li>
+                            <a style="color: red;" class="ti">한라산 등반시 주의사항!!!!</a>
+                            <span class="date">2020-08-21</span>
+                        </li>
+                        <li>
+                            <a class="ti">한라산의 사계절 소식♥</a>
+                            <span class="date">2023-03-10</span>
+                        </li>
+                    </ul>
+            </ul>
+            <div>
+                <iframe class="vi" src="./recnures/videos/KakaoTalk_20230910_214036791.mp4" frameborder="0"></iframe>
+            </div>
+        </div>
+
+
+        <div class="footer-util">
+            <div class="container">
+                <div class="row">
+                    <p>
+                        <span>한라산국립공원(어리목본소) <strong>064-713-9950~1</strong></span>
+                        <span>성판악지소 <strong>064-725-9950</strong></span>
+                        <span>관음사지소 <strong>064-756-9950</strong></span>
+                        <span>영실지소 <strong>064-747-9950</strong></span>
+                        <span>돈내코지구안내소 <strong>064-710-6921</strong></span>
+                    </p>
+                </div>
+                </ul>
+            </div>
+        </div>
+
+
+        <div id="result"></div>
+
+        <script>
+
+            function f_send() {
+
+                $.ajax({
+                    "url": "https://api.odcloud.kr/api/15056441/v1/uddi:1635e441-a1c9-42c1-95a8-a2b4891245bb_201911141055?page=1&perPage=10&returnType=json&serviceKey=kURWxBC2bzopBT3ZwD4KIxhHfoHi00YCVKQaHKeevEYzv2zkoR2ediVw%2B7RvTKXivknnTuQPPXMkgZXpNg0gOg%3D%3D",
+                    "method": "GET",
+                    "data": {
+                        "start_date": "2020-08-01",
+                        "end_date": "2021-08-01",
+                        "base": "USD"
+                    },
+                    "dataType": "JSON",
+                    "success": function (response) {
+                        // response는 JSON 객체
+                        document.querySelector("#result").innerHTML = JSON.stringify(response);
+
+
+                        console.log(JSON.stringify(response));
+                    },
+                    "error": function () {
+                        alert("즐~");
+                    }
+
+                });
 
 
 
-<script>
-    const v_banner = document.getElementsByClassName("banner");
+            }
+            const v_banner = document.getElementsByClassName("banner");
 
-for(let i = 0; i < v_banner.length; i++){
-v_banner[i].style.zIndex = i;
-}
+            for (let i = 0; i < v_banner.length; i++) {
+                v_banner[i].style.zIndex = i;
+            }
 
-function f_cgIndex(){
-for(let i = 0; i < v_banner.length; i++){
-v_banner[i].style.zIndex = (v_banner[i].style.zIndex + 1) % 6;
-}
+            function f_cgIndex() {
+                for (let i = 0; i < v_banner.length; i++) {
+                    v_banner[i].style.zIndex = (v_banner[i].style.zIndex + 1) % 6;
+                }
 
-setTimeout(f_cgIndex, 2000);
-}
+                setTimeout(f_cgIndex, 2000);
 
-f_cgIndex();
-</script>
-    </div>
+
+            };
+
+
+
+            f_cgIndex();
+
+            function fn_login() {
+                alert("로그인되셨습니다.");
+                var id = document.getElementById("id").value;
+                document.getElementById("login").innerHTML = "<div>" + id + "님</div>";
+            }
+
+        </script>
+
 </body>
+
 </html>
