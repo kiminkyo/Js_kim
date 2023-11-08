@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    /* 메인 잡아주는 div */
+    .main {
+        width: auto;
+        height: auto;
+
+    }
+
+    /* 메인 첫단 회원가입, 로그인단 */
+    .log {
+        width: 30px;
+        height: 30px;
+        color: black;
+        font-size: 25px;
+        line-height: 40px;
+        position: relative;
+        left: 80%;
+        text-decoration: none;
+        margin: 20px;
+    }
+    .mail{
+        text-decoration: none;
+        color: black;
+        margin-left: 100px;
+        right: 200px;
+        position: relative;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .phone{
+        text-decoration: none;
+        color: black;
+        position: relative;
+        right: 200px;
+        font-size: 20px;
+    }
+
+    .log-bar {
+        background: linear-gradient(to left, #b8ceef 0%, #C0F5FB 100%);
+    }
+
+    /* 두번째 단 로고 및 메뉴창 */
+    .box>li {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        margin-left: 100px;
+        left: 500px;
+        font-size: 30px;
+    }
+
+    .box {
+        background: linear-gradient(to left, #b8ceef 0%, #C0F5FB 100%);
+    }
+
+    /* 중간 메뉴단 */
+
+    .but {
+        width: 150px;
+        height: 70px;
+        margin: 0 auto;
+        border-radius: 10px;
+        text-align: center;
+        color: #fff;
+        font-size: 25px;
+        font-family: 'S-CoreDream-6Bold';
+        background-color: #2259B9;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .center {
+        border: 1px solid black;
+        width: 300px;
+        height: 200px;
+        font-size: 30px;
+        background-color: #b8ceef;
+        position: relative;
+        display: inline-block;
+        margin: 100px;
+        left: 750px;
+        bottom:  400px;
+    }
+
+    .center1 {
+        border: 1px solid black;
+        width: 300px;
+        height: 200px;
+        font-size: 30px;
+        background-color: #b8ceef;
+        position: relative;
+        display: inline-block;
+        margin: 100px;
+        bottom: 400px;
+        left:  800px;
+
+    }
+
+    .center2 {
+        border: 1px solid black;
+        width: 300px;
+        height: 200px;
+        font-size: 30px;
+        background-color: #b8ceef;
+        position: relative;
+        display: inline-block;
+        margin: 100px;
+        right: 270px
+    }
+
+    .center3 {
+        border: 1px solid black;
+        width: 300px;
+        height: 200px;
+        font-size: 30px;
+        background-color: #b8ceef;
+        position: relative;
+        display: inline-block;
+        right: 110px;
+
+    }
+
+    .at {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    /* 공지사항 및 Q&A */
+
+    #scroll {
+        font-size: 50px;
+        text-decoration: none;
+        color: white;
+        background-color: #b8ceef;
+        cursor: pointer;
+        border-radius: 10px;
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+        white-space: nowrap;
+        top: 20px;
+        left:  95%;
+        position: relative;
+    }
+</style>
+
+<body>
+
+
+
+
+    <div class="main">
+
+        <div class="log-bar">
+            <a href="" class="log">회원가입</a>
+            <a href="" class="log">로그인</a>
+            <a class="phone">☎ 042-000-0000</a> 
+            <a href="" class="mail">✉ phoenix@gmail</a>
+            
+
+            
+        </div>
+
+        <!-- 두번쨰단 -->
+        <div class="box">
+            <img src="/recnures/images/병원로고.png" height="100px" width="200px%" alt="">
+            <li>진료안내</li>
+            <li>진료예약</li>
+            <li>이용안내</li>
+            <li>병원소개</li>
+        </div>
+        <!-- 끝 -->
+
+        <!--중간 메뉴단  -->
+        <div>
+            <div id=" content">
+                <a href="" id="scroll">공지사항/Q&A</a>
+            </div>
+            <div class="center">
+                <br>
+                <a href="" class="at">방문고객 빠른예약</a>
+                <br>
+                <button class="but">예약하기</button>
+            </div>
+            <div class="center1">
+                <br>
+                <a href="" class="at">진료과/의료진 검색</a>
+
+                <br>
+                <button class="but">의료진</button>
+            </div>
+            <div class="center2">
+                <br>
+                <a href="" class="at">이용 안내</a>
+                <br>
+                <button class="but">찾아오시는 길</button>
+            </div>
+            <div class="center3">
+                <br>
+                <a href="" class="at">증명서 발급</a>
+                <br>
+                <button class="but">발급하기</button>
+            </div>
+        </div>
+        <!-- 끝 -->
+        <!--공지사항 탭  -->
+
+    </div>
+
+</body>
+
+</html>
